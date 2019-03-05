@@ -41,6 +41,7 @@ section img {
 @media (min-width: 700px) {
     .logo {
         width: auto;
+        order: 2;
     }
 
     .typgraphy, .ui {
@@ -48,6 +49,6 @@ section img {
     }
 
     .branding, .graffiti {
-        order: 2;
+        order: 3;
     }
 }
