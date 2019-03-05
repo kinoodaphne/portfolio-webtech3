@@ -35,3 +35,19 @@ section img {
   flex-basis: 100px; */
     flex: 1 1 100px;
 }
+
+/* MOBILE VERSION */
+
+@media (min-width: 700px) {
+    .logo {
+        width: auto;
+    }
+
+    .typgraphy, .ui {
+        order: 1;
+    }
+
+    .branding, .graffiti {
+        order: 2;
+    }
+}
