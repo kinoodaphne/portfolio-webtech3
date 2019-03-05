@@ -3,13 +3,16 @@
 }
 
 body {
-    font-family: Helvetica;
+    font-family: "Montserrat";
+    font-style: bold;
 }
 
 main {
-    background-color: #eead63;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 110px 100px 100px;
 }
 
@@ -43,9 +46,20 @@ div {
     grid-column-end: span 3;
 }
 
+.qr_code img {
+    width: 70%;
+}
+
+@media (max-width: 900px) {
+    body {
+        color: white;
+    }
+}
+
 @media (max-width: 500px) {
     main {
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 80px 50px 400px 0px 50px;
     }
 
     .description {
@@ -54,7 +68,7 @@ div {
 
     .qr_code img {
         width: auto;
-        height: 60%;
+        height: 80%;
     }
 
     .qr_code {
