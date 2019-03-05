@@ -18,3 +18,20 @@ nav ul li {
     padding: 1em;
 }
 
+/* CSS GRID IMAGES */
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+section img {
+    padding: 15px;
+    /* is the same as
+  flex-grow: 1;
+  flex-basis: 100px; */
+    flex: 1 1 100px;
+}
