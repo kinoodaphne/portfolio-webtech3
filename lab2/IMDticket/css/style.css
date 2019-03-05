@@ -42,3 +42,39 @@ div {
     grid-column-start: 1;
     grid-column-end: span 3;
 }
+
+@media (max-width: 500px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .description {
+        display: none;
+    }
+
+    .qr_code img {
+        width: auto;
+        height: 60%;
+    }
+
+    .qr_code {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 3;
+        grid-row-end: span 1;
+    }
+
+    .title {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        background: black;
+        color: white;
+    }
+
+    .price {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 5;
+        grid-row-end: span 1;
+    }
+}
