@@ -10,3 +10,7 @@ Proof of Flexbox Froggy completion
 
 Proof of CSS Garden completion
 ![alt text](https://github.com/kinoodaphne/portfolio-webtech3/blob/master/lab2/finishedCSSgarden_DaphneKinoo.png)
+
+[link naar IMDstagram codepen](https://codepen.io/daphnekinoo/pen/WmGGNq)
+
+[link naar IMDticket codepen](https://codepen.io/daphnekinoo/pen/jJrQmd)
