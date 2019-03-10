@@ -74,15 +74,17 @@ var App = function () {
       // this function should create a new note by using the Note() class
 
       // HINT🤩
-      //Note.add();
+      var text = document.querySelector("#txtAddNote").value;
+      var note = new Note(text);
+      Note.add();
       // note.saveToStorage();
-      // this.reset();
-
+      this.reset();
     }
   }, {
     key: "reset",
     value: function reset() {
       // this function should reset the form
+      document.querySelector("#txtAddNote").reset();
     }
   }]);
 
