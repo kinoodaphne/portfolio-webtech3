@@ -28,10 +28,10 @@ var Note = function () {
       // create remove button
       var a = document.createElement('a');
       // add class .card-remove
-      p.className = "card-remove";
+      a.className = "card-remove";
       // add link
-      p.setAttribute = ("href", "#");
-      p.innerHTML = "Remove";
+      a.setAttribute = ("href", "#");
+      a.innerHTML = "Remove";
 
       // btn remove this card
       a.addEventListener('click', this.remove.bind(newNote));
@@ -51,7 +51,7 @@ var Note = function () {
     }
   }, {
     key: 'saveToStorage',
-    value: function saveToStorage() {
+    value: function saveToStorage(text) {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
@@ -61,6 +61,7 @@ var Note = function () {
     value: function remove() {
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
+      this.remove();
     }
   }]);
 
@@ -73,12 +74,20 @@ var App = function () {
 
     console.log("👊🏼 The Constructor!");
 
-    // HINT🤩
-    // clicking the button should work
-    // pressing the enter key should also work
-    // this.btnAdd = ???
-    // this.btnAdd.addEventListener("click", this.createNote.bind(this));
-    // this.loadNotesFromStorage();
+    // click button
+    this.btnAdd = document.querySelector('#btnAddNote');
+
+    // press enter
+    document.querySelector('#txtAddNote').addEventListener('keypress', function (e) {
+      var keyCode = e.keyCode;
+      if (keyCode == 13) {
+        document.querySelector('#btnAddNote').click();
+        e.preventDefault();
+      }
+    });
+
+    this.btnAdd.addEventListener("click", this.createNote.bind(this));
+    this.loadNotesFromStorage();
   }
 
   _createClass(App, [{
@@ -101,16 +110,17 @@ var App = function () {
       // add to .notes
       newNote.add();
 
-      // saves to storage
-      newNote.saveToStorage();
-
       // resets input text field
       this.reset();
+
+      // saves to storage
+      newNote.saveToStorage();
     }
   }, {
     key: 'reset',
     value: function reset() {
-      // this function should reset the form 
+      // this function should reset the form
+      document.querySelector("form").reset();
     }
   }]);
 

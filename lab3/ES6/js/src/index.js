@@ -18,10 +18,10 @@ class Note {
     // create remove button
     let a = document.createElement('a');
     // add class .card-remove
-    p.className = "card-remove";
+    a.className = "card-remove";
     // add link
-    p.setAttribute = ("href", "#");
-    p.innerHTML = "Remove";
+    a.setAttribute = ("href", "#");
+    a.innerHTML = "Remove";
 
     // btn remove this card
     a.addEventListener('click', this.remove.bind(newNote));
@@ -39,7 +39,7 @@ class Note {
     notes.appendChild(this.element);
   }
   
-  saveToStorage(){
+  saveToStorage(text){
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
@@ -48,6 +48,7 @@ class Note {
   remove(){
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    this.remove();
   } 
 }
 
@@ -55,12 +56,20 @@ class App {
   constructor() {
     console.log("👊🏼 The Constructor!");
   
-    // HINT🤩
-    // clicking the button should work
-    // pressing the enter key should also work
-    // this.btnAdd = ???
-    // this.btnAdd.addEventListener("click", this.createNote.bind(this));
-    // this.loadNotesFromStorage();
+    // click button
+    this.btnAdd = document.querySelector('#btnAddNote');
+
+    // press enter
+    document.querySelector('#txtAddNote').addEventListener('keypress', (e) => {
+      let keyCode = e.keyCode;
+      if (keyCode == 13) {
+        document.querySelector('#btnAddNote').click();
+        e.preventDefault();
+      }
+    });
+
+    this.btnAdd.addEventListener("click", this.createNote.bind(this));
+    this.loadNotesFromStorage();
   }
   
   loadNotesFromStorage() {
@@ -79,18 +88,18 @@ class App {
 
     // add to .notes
     newNote.add();
-
-    // saves to storage
-    newNote.saveToStorage();
     
     // resets input text field
     this.reset();
+
+    // saves to storage
+    newNote.saveToStorage();
   }
   
   reset(){
-    // this function should reset the form 
+    // this function should reset the form
+    document.querySelector("form").reset();
   }
-  
 }
 
 let app = new App();
