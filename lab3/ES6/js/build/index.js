@@ -9,7 +9,7 @@ var Note = function () {
     _classCallCheck(this, Note);
 
     this.title = title;
-    // this.element = this.createElement(title);
+    this.element = this.createElement(title);
   }
 
   _createClass(Note, [{
@@ -26,8 +26,7 @@ var Note = function () {
     value: function add() {
       // HINT🤩
       // this function should append the note to the screen somehow
-
-
+      document.querySelector(".notes").appendChild(this.element);
     }
   }, {
     key: "saveToStorage",
