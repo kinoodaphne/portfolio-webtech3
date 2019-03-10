@@ -15,9 +15,30 @@ var Note = function () {
   _createClass(Note, [{
     key: 'createElement',
     value: function createElement(title) {
+      // create new note
       var newNote = document.createElement('div');
+      // add class .card
+      newNote.className = "card";
 
-      // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
+      // create title in card
+      var p = document.createElement('p');
+      // give value to p
+      p.innerHTML = this.title;
+
+      // create remove button
+      var a = document.createElement('a');
+      // add class .card-remove
+      p.className = "card-remove";
+      // add link
+      p.setAttribute = ("href", "#");
+      p.innerHTML = "Remove";
+
+      // btn remove this card
+      a.addEventListener('click', this.remove.bind(newNote));
+
+      // add title and button to note
+      newNote.appendChild(p);
+      newNote.appendChild(a);
 
       return newNote;
     }

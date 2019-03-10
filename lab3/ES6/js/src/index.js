@@ -5,10 +5,31 @@ class Note {
   }
   
   createElement(title){
+    // create new note
     let newNote = document.createElement('div');
-    
-    // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
-    
+    // add class .card
+    newNote.className = "card";
+
+    // create title in card
+    let p = document.createElement('p');
+    // give value to p
+    p.innerHTML = this.title;
+
+    // create remove button
+    let a = document.createElement('a');
+    // add class .card-remove
+    p.className = "card-remove";
+    // add link
+    p.setAttribute = ("href", "#");
+    p.innerHTML = "Remove";
+
+    // btn remove this card
+    a.addEventListener('click', this.remove.bind(newNote));
+
+    // add title and button to note
+    newNote.appendChild(p);
+    newNote.appendChild(a);
+
     return newNote;
   }
   
