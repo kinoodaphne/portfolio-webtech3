@@ -6,8 +6,24 @@ class Note {
   
   createElement(title){
     let newNote = document.createElement('div');
-    
-    // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
+    newNote.title = title;
+    // This property is useful to add, remove and toggle CSS classes on an element.
+    // Adds a css class card to the HTML element div
+    newNote.classList.add('card');
+
+    // Create new element a in the newly created div
+    let a = document.createElement('a');
+    a.innerHTML = "Remove";
+    a.href = "#";
+    // Adds a css class card-remove to the HTML element a
+    newNote.classList.add('card-remove');
+    newNote.appendChild(a);
+    // Remove note
+    a.addEventListener('click', this.remove.bind(newNote));
+
+    let p = document.createElement('p');
+    p.innerHTML = title;
+    newNote.appendChild(p);
     
     return newNote;
   }
@@ -27,6 +43,8 @@ class Note {
   remove(){
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+
+    this.remove();
   } 
 }
 
