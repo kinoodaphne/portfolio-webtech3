@@ -21,6 +21,13 @@ var Note = function () {
       // Adds a css class card to the HTML element div
       newNote.classList.add('card');
 
+      var p = document.createElement('p');
+      p.innerHTML = title;
+      newNote.appendChild(p);
+
+      var notes = document.querySelector('.notes');
+      notes.append(newNote);
+
       // Create new element a in the newly created div
       var a = document.createElement('a');
       a.innerHTML = "Remove";
@@ -30,10 +37,6 @@ var Note = function () {
       newNote.appendChild(a);
       // Remove note
       a.addEventListener('click', this.remove.bind(newNote));
-
-      var p = document.createElement('p');
-      p.innerHTML = title;
-      newNote.appendChild(p);
 
       return newNote;
     }
@@ -46,10 +49,20 @@ var Note = function () {
     }
   }, {
     key: 'saveToStorage',
-    value: function saveToStorage() {
+    value: function saveToStorage(text) {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+
+      // Adds new item to end of array, and returns new length
+      saveNotes.push(text);
+
+      // storage.setItem(keyName, keyvalue);
+      /* when passed a key name and value, setItem() will
+      add that key to the given storage object, or update
+      that key's value if it already exists.*/
+      // JSON.stringify converts a js-object/value to a JSON string.
+      localStorage.setItem('notes', JSON.stringify(saveNotes));
     }
   }, {
     key: 'remove',
@@ -94,7 +107,7 @@ var App = function () {
       var text = document.querySelector("#txtAddNote").value;
       var note = new Note(text);
       Note.add();
-      // note.saveToStorage();
+      Note.saveToStorage(text);
       this.reset();
     }
   }, {
@@ -109,5 +122,12 @@ var App = function () {
 }();
 
 var app = new App();
+
+// Create array to save notes in
+var saveNotes = [];
+// JSON = exchange data to/from a web server
+// JSON.parse => Parses data and let's it become a JS-object
+// Parses the item you took from localStorage
+saveNotes = JSON.parse(localStorage.getItem('notes'));
 
 //# sourceMappingURL=index.js.map

@@ -11,20 +11,23 @@ class Note {
     // Adds a css class card to the HTML element div
     newNote.classList.add('card');
 
-    // Create new element a in the newly created div
-    let a = document.createElement('a');
-    a.innerHTML = "Remove";
-    a.href = "#";
-    // Adds a css class card-remove to the HTML element a
-    newNote.classList.add('card-remove');
-    newNote.appendChild(a);
-    // Remove note
-    a.addEventListener('click', this.remove.bind(newNote));
-
     let p = document.createElement('p');
     p.innerHTML = title;
     newNote.appendChild(p);
+
+    let notes = document.querySelector('.notes');
+    notes.append(newNote);
     
+  // Create new element a in the newly created div
+  let a = document.createElement('a');
+  a.innerHTML = "Remove";
+  a.href = "#";
+  // Adds a css class card-remove to the HTML element a
+  newNote.classList.add('card-remove');
+  newNote.appendChild(a);
+  // Remove note
+  a.addEventListener('click', this.remove.bind(newNote));
+
     return newNote;
   }
   
@@ -34,10 +37,20 @@ class Note {
     document.querySelector(".notes").appendChild(this.element);
   }
   
-  saveToStorage(){
+  saveToStorage(text){
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    
+    // Adds new item to end of array, and returns new length
+    saveNotes.push(text);
+
+    // storage.setItem(keyName, keyvalue);
+    /* when passed a key name and value, setItem() will
+    add that key to the given storage object, or update
+    that key's value if it already exists.*/
+    // JSON.stringify converts a js-object/value to a JSON string.
+    localStorage.setItem('notes', JSON.stringify(saveNotes));
   }
   
   remove(){
@@ -73,7 +86,7 @@ class App {
     let text = document.querySelector("#txtAddNote").value;
     let note = new Note(text);
     Note.add();
-    // note.saveToStorage();
+    Note.saveToStorage(text);
     this.reset();
     
   }
@@ -86,3 +99,10 @@ class App {
 }
 
 let app = new App();
+
+// Create array to save notes in
+let saveNotes = [];
+// JSON = exchange data to/from a web server
+// JSON.parse => Parses data and let's it become a JS-object
+// Parses the item you took from localStorage
+saveNotes = JSON.parse(localStorage.getItem('notes'));
