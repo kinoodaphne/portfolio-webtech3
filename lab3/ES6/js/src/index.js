@@ -71,11 +71,20 @@ class App {
    
   createNote(e){
     // this function should create a new note by using the Note() class
+    // get value from input
+    let value = document.querySelector('#txtAddNote').value;
+
+    // create new note; set title
+    let newNote = new Note(value);
+
+    // add to .notes
+    newNote.add();
+
+    // saves to storage
+    newNote.saveToStorage();
     
-    // HINT🤩
-    // note.add();
-    // note.saveToStorage();
-    // this.reset();
+    // resets input text field
+    this.reset();
   }
   
   reset(){

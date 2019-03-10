@@ -92,11 +92,20 @@ var App = function () {
     key: 'createNote',
     value: function createNote(e) {
       // this function should create a new note by using the Note() class
+      // get value from input
+      var value = document.querySelector('#txtAddNote').value;
 
-      // HINT🤩
-      // note.add();
-      // note.saveToStorage();
-      // this.reset();
+      // create new note; set title
+      var newNote = new Note(value);
+
+      // add to .notes
+      newNote.add();
+
+      // saves to storage
+      newNote.saveToStorage();
+
+      // resets input text field
+      this.reset();
     }
   }, {
     key: 'reset',
