@@ -9,7 +9,7 @@ var Note = function () {
     _classCallCheck(this, Note);
 
     this.title = title;
-    this.element = this.createElement(title);
+    // this.element = this.createElement(title);
   }
 
   _createClass(Note, [{
@@ -26,7 +26,8 @@ var Note = function () {
     value: function add() {
       // HINT🤩
       // this function should append the note to the screen somehow
-      document.querySelector(".notes").appendChild(this.element);
+
+
     }
   }, {
     key: "saveToStorage",
@@ -73,17 +74,15 @@ var App = function () {
       // this function should create a new note by using the Note() class
 
       // HINT🤩
-      var text = document.querySelector("#txtAddNote").value;
-      var note = new Note(text);
-      Note.add();
+      //Note.add();
       // note.saveToStorage();
       // this.reset();
+
     }
   }, {
     key: "reset",
     value: function reset() {
       // this function should reset the form
-      document.querySelector("#txtAddNote").reset();
     }
   }]);
 

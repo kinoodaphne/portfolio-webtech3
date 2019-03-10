@@ -1,7 +1,7 @@
 class Note {
   constructor(title) {
     this.title = title;
-    this.element = this.createElement(title);
+   // this.element = this.createElement(title);
   }
   
   createElement(title){
@@ -15,7 +15,7 @@ class Note {
   add(){
     // HINT🤩
     // this function should append the note to the screen somehow
-    document.querySelector(".notes").appendChild(this.element);
+    
     
   }
   
@@ -53,9 +53,7 @@ class App {
     // this function should create a new note by using the Note() class
     
     // HINT🤩
-    let text = document.querySelector("#txtAddNote").value;
-    let note = new Note(text);
-    Note.add();
+    //Note.add();
     // note.saveToStorage();
     // this.reset();
     
@@ -63,7 +61,6 @@ class App {
   
   reset(){
     // this function should reset the form
-    document.querySelector("#txtAddNote").reset();
   }
   
 }
