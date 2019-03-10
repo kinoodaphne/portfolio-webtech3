@@ -79,8 +79,7 @@ var App = function () {
 
     // press enter
     document.querySelector('#txtAddNote').addEventListener('keypress', function (e) {
-      var keyCode = e.keyCode;
-      if (keyCode == 13) {
+      if (e.keyCode == 13) {
         document.querySelector('#btnAddNote').click();
         e.preventDefault();
       }
