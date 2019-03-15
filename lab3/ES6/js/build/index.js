@@ -51,17 +51,55 @@ var Note = function () {
     }
   }, {
     key: 'saveToStorage',
-    value: function saveToStorage(text) {
-      // HINT🤩
-      // localStorage only supports strings, not arrays
-      // if you want to store arrays, look at JSON.parse and JSON.stringify
+    value: function saveToStorage() {
+
+      var savedNotes = localStorage.getItem("savedNotes");
+
+      /**
+       * check if there are already notes in storage.
+       * if there are no notes; make a new array
+       */
+      var savedNotesArray = void 0;
+
+      if (savedNotes == null) {
+        savedNotesArray = [];
+      }
+
+      /**
+       * if there are already notes in the array;
+       * parse them
+       */
+      else {
+          savedNotesArray = JSON.parse(savedNotes);
+        }
+
+      // add the note to the storage/array
+      savedNotesArray.push(this.title);
+
+      // parse note and set the item in storage
+      localStorage.setItem("savedNotes", JSON.stringify(savedNotesArray));
     }
   }, {
     key: 'remove',
     value: function remove() {
-      // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
-      // in this function, 'this' will refer to the current note element
-      this.remove();
+      var savedNotes = JSON.parse(localStorage.getItem('savedNotes'));
+
+      // add class to removing note
+      var note = this;
+      note.className = 'card fadeOut animated';
+      setTimeout(function () {
+        note.parentNode.removeChild(note);
+      }, 1000);
+
+      var index = savedNotes.indexOf(this.firstChild.innerHTML);
+
+      // adds/removes items to/from an array, and returns the removed item. 
+      savedNotes.splice(index, 1);
+
+      // update storage
+      localStorage.setItem('savedNotes', JSON.stringify(savedNotes));
+
+      console.log("Removed note");
     }
   }]);
 
@@ -92,9 +130,22 @@ var App = function () {
   _createClass(App, [{
     key: 'loadNotesFromStorage',
     value: function loadNotesFromStorage() {
-      // HINT🤩
-      // load all notes from storage here and add them to the screen
-      // something like note.add() in a loop would be nice
+
+      // take notes from storage and parse them  to be readable
+      var savedNotes = JSON.parse(localStorage.getItem("savedNotes"));
+
+      /**
+       * check if there are notes in the storage.
+       * if there are notes in storage; show them on screen
+       * by "creating" a new note with the value in it
+       *  */
+
+      if (savedNotes.length > 0) {
+        for (var i = 0; i < savedNotes.length; i++) {
+          var noteFromStorage = new Note(savedNotes[i]);
+          noteFromStorage.add();
+        };
+      }
     }
   }, {
     key: 'createNote',
