@@ -16,3 +16,6 @@ Proof of CSS Garden completion
 [link naar IMDstagram codepen](https://codepen.io/daphnekinoo/pen/WmGGNq)
 
 [link naar IMDticket codepen](https://codepen.io/daphnekinoo/pen/jJrQmd)
+
+# Week 3 - ES6
+[link naar Nodes app codepen](https://codepen.io/daphnekinoo/pen/XGReVN)
