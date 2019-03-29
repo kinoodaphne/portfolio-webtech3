@@ -2,15 +2,25 @@ body{
     margin: 0;
     padding: 0;
     text-align:center;
+    background-color: lightgray;
+    font-family: 'Lato';
 }
 
 #app{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 80vh;
     text-align: center;
-    font-family: Helvetica;
-    font-size: 25vh;
     color: white;
+}
+
+.container {
+    width: 75%;
+    height: 75%;
+    background-color: #5c4c4c;
+}
+
+.temp {
+    font-size: 50px;
 }
