@@ -41,9 +41,21 @@ class Weather {
 
     getImage(img) {
         //API_KEY for image
-        let url = ``;
+        let url = `https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/random?${this.API_KEY_IMG}}`;
+        fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            // generate random number for the api
+            let random = Math.floor(Math.random() * 10);
+            let imgRandom = json.htis[random].largeImageUrl;
+            document.querySelector(".image").setAttribute("src", imgRandom);
+            
+            document.querySelector(".temp").innerHTML = ("Today is " + picture);
+
+        })
     }
 
-}
 //let app = new Weather(API_KEY, API_KEY_IMG);
-let app = new Weather('99fc788f5b715f9a75262427d4da53aa', 'e59jizvvHYSZ3rKBBk0xLWmE4ElKZ4on');
+let app = new Weather('99fc788f5b715f9a75262427d4da53aa');
