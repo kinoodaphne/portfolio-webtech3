@@ -21,3 +21,7 @@ Proof of CSS Garden completion
 [link naar Nodes app codepen](https://codepen.io/daphnekinoo/pen/XGReVN)
 
 [Portfolio - week 3](https://github.com/kinoodaphne/portfolio-webtech3/tree/master/lab3)
+
+# Week 4 - API
+[link naar API codepen](https://codepen.io/daphnekinoo/pen/jROwEX)
+[Portfolio - week 4](https://github.com/kinoodaphne/portfolio-webtech3/tree/master/lab4)
